@@ -1,6 +1,11 @@
 # neural_net
-WORK IN PROGRESS: Do not use. 
+WORK IN PROGRESS
 
-This is my first attempt at a neural net, from scratch, no imports. I have yet to come up with a use case for it: I can't decide on physics (solutions to molecular dynamics problems or schrodinger equations) or a bitcoin price predictor. 
+Usecase: Translation app. Takes images of handwritten words and translates them to a foreign language using LibreTranslate API.
 
-I'll likely use C sharp for this as Python would be cheating and C# is faster.
+Stack: MERN:
+
+Mongo DB if necessary (translation history)
+Express.js for any APIs to retrieve/post translation history
+React front end - frontend to include picture upload page, page to view current translations and prior ones
+Node - running on Node runtime - may potentially upgrade to bun if I purchase a mac/download linux 
