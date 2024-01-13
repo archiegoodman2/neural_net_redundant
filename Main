@@ -1,43 +1,119 @@
-using System;
+//first let's start by defining some useful functions that we may need later
 
-class Program
-{
-    static void Main()
-    {
-        Console.WriteLine("Hello, World!");
+function dotProduct(matrix1, matrix2) {
+    // First, check if the two matrices are compatible
+    const rows1 = matrix1.length;
+    const cols1 = matrix1[0].length;
+    const rows2 = matrix2.length;
+    const cols2 = matrix2[0].length;
 
-        static int[,] dotProduct(int[,] matrix1, int[,] matrix2)
-        {
-            //first check if the two matrices are compatible
-            int rows1 = matrix1.GetLength(0);
-            int cols1 = matrix1.GetLength(1);
-            int rows2 = matrix2.GetLength(0);
-            int cols2 = matrix2.GetLength(1);
+    if (cols1 !== rows2) {
+        throw new Error("Matrices not compatible. Rows of the first matrix must equal columns of the second, or vice versa");
+    }
 
-            if (cols1 != rows2)
-            {
-                throw new InvalidOperationException("Matrices not compatible");
+    const result = new Array(rows1).fill(null).map(() => new Array(cols2).fill(0));
+
+    for (let i = 0; i < rows1; i++) {
+        for (let j = 0; j < cols2; j++) {
+            for (let k = 0; k < cols1; k++) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
             }
+        }
+    }
 
-            int[,] result = new int[rows1, cols2];
+    return result;
+}
 
-            for (int i = 0; i < rows1; i++)
-            {
-                for (int j = 0; j < cols2; j++)
-                {
-                    for (int k = 0; k < cols1; k++)
-                    {
-                        result[i, j] += matrix1[i, k] * matrix2[k, j];
-                    }
-                }
-            }
+/* testing
 
-            return result;
+const matrix1 = [
+    [1, 2 ],
+    [3, 4 ]
+];
+
+const matrix2 = [
+    [5, 6],
+    [7, 8],
+];
+
+const resultMatrix = dotProduct(matrix3, matrix4);
+console.log(resultMatrix);
+
+
+//testing the error throwing - sort of an edge case here
+const matrix3 = [
+    [1, 2, 3],
+    [3, 4, 5],
+];
+
+const matrix4 = [
+    [5, 6],
+    [7, 8],
+    [9, 8],
+];
+
+const resultMatrix = dotProduct(matrix3, matrix4);
+console.log(resultMatrix);
+
+const badmatrix1 = [
+    [1, 2, 3],
+    [3, 4, 5],
+];
+
+const badmatrix2 = [
+    [5, 6],
+    [7, 8],
+],
+
+const resultMatrix = dotProduct(badmatrix1, badmatrix2);
+console.log(resultMatrix); 
+// this should throw an error
+
+
+*/
+
+//then let's define the 'blueprint' for what a neuron should look like, with setter methods
+
+class Neuron {
+    // Properties
+    constructor(inputs, weights, bias) {
+        this.setInputs(inputs);
+        this.setWeights(weights);
+        this.setBias(bias);
+    }
+
+    // Setter method for Inputs
+    setInputs(inputs) {
+        if (!inputs || !Array.isArray(inputs)) {
+            throw new Error("Inputs must be a non-null array");
         }
 
-        Console.WriteLine("Press any key to exit...");
-        Console.ReadKey();
-        //rest of code goes here
+        this.inputs = [...inputs];
     }
-};
 
+    // Setter method for Weights
+    setWeights(weights) {
+        if (!weights || !Array.isArray(weights)) {
+            throw new Error("Weights must be a non-null array");
+        }
+
+        this.weights = [...weights];
+    }
+
+    // Setter method for Bias
+    setBias(bias) {
+        this.bias = bias;
+    }
+}
+
+// testing
+const inputs = [1.0, 2.0, 3.0];
+const weights = [0.5, 0.8, -0.2];
+const bias = 0.1;
+
+const neuron = new Neuron(inputs, weights, bias);
+
+// Access properties
+console.log("Inputs: " + neuron.inputs.join(", "));
+console.log("Weights: " + neuron.weights.join(", "));
+console.log("Bias: " + neuron.bias);
