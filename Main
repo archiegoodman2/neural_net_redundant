@@ -1,5 +1,3 @@
-//first let's start by defining some useful functions that we may need later
-
 function dotProduct(matrix1, matrix2) {
     // First, check if the two matrices are compatible
     const rows1 = matrix1.length;
@@ -25,10 +23,9 @@ function dotProduct(matrix1, matrix2) {
 }
 
 /* testing
-
 const matrix1 = [
-    [1, 2 ],
-    [3, 4 ]
+    [1, 2],
+    [3, 4],
 ];
 
 const matrix2 = [
@@ -36,43 +33,11 @@ const matrix2 = [
     [7, 8],
 ];
 
-const resultMatrix = dotProduct(matrix3, matrix4);
+const resultMatrix = dotProduct(matrix1, matrix2);
 console.log(resultMatrix);
-
-
-//testing the error throwing - sort of an edge case here
-const matrix3 = [
-    [1, 2, 3],
-    [3, 4, 5],
-];
-
-const matrix4 = [
-    [5, 6],
-    [7, 8],
-    [9, 8],
-];
-
-const resultMatrix = dotProduct(matrix3, matrix4);
-console.log(resultMatrix);
-
-const badmatrix1 = [
-    [1, 2, 3],
-    [3, 4, 5],
-];
-
-const badmatrix2 = [
-    [5, 6],
-    [7, 8],
-],
-
-const resultMatrix = dotProduct(badmatrix1, badmatrix2);
-console.log(resultMatrix); 
-// this should throw an error
-
 
 */
 
-//then let's define the 'blueprint' for what a neuron should look like, with setter methods
 
 class Neuron {
     // Properties
@@ -106,7 +71,7 @@ class Neuron {
     }
 }
 
-// testing
+// Example usage
 const inputs = [1.0, 2.0, 3.0];
 const weights = [0.5, 0.8, -0.2];
 const bias = 0.1;
@@ -117,3 +82,20 @@ const neuron = new Neuron(inputs, weights, bias);
 console.log("Inputs: " + neuron.inputs.join(", "));
 console.log("Weights: " + neuron.weights.join(", "));
 console.log("Bias: " + neuron.bias);
+
+/* now onto coding our first layer
+const weights1 = [0.2, 0.8, -0.5, 1.0];
+const weights2 = [0.5, -0.91, -0.26, -0.5];
+const weights3 = [-0.26, -0.27, 0.17, 0.87];
+
+const bias1 = 2
+const bias2 = 3
+const bias3 = 0.5
+
+//this represents a layer, where each element of our list is a neuron
+
+const output = [inputs[0]*weights1[0] + inputs[1]*weights1[1] + inputs[2]*weights1[2] + inputs[3]*weights1[3], 
+                inputs[0]*weights2[0] + inputs[1]*weights2[1] + inputs[2]*weights2[2] + inputs[3]*weights2[3], 
+                inputs[0]*weights3[0] + inputs[1]*weights3[1] + inputs[2]*weights3[2] + inputs[3]*weights3[3]] ; 
+
+console.log(output) */
