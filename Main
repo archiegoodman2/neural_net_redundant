@@ -1,3 +1,8 @@
+
+
+
+//most people do this in python, which has numpy. I'm not, so here we will define any functions we use that normally would come from numpy
+
 function dotProduct(matrix1, matrix2) {
     // First, check if the two matrices are compatible
     const rows1 = matrix1.length;
@@ -5,20 +10,34 @@ function dotProduct(matrix1, matrix2) {
     const rows2 = matrix2.length;
     const cols2 = matrix2[0].length;
 
-    if (cols1 !== rows2) {
+    if (rows1 == 1 && rows2 == 1) {
+        //logic for if we're multiplying two one dimensional matrices
+
+        //for this our result will be a scalar so we just initialize to zero
+
+        const result = 0
+
+        for (let i = 0; i < cols1; i++) {
+            result += matrix1[i] * matrix2[i]
+        }
+
+    } else if (cols1 !== rows2) {
+        //catch the error if they arent both 1D but are not compatible:
+
         throw new Error("Matrices not compatible. Rows of the first matrix must equal columns of the second, or vice versa");
-    }
-
-    const result = new Array(rows1).fill(null).map(() => new Array(cols2).fill(0));
-
-    for (let i = 0; i < rows1; i++) {
-        for (let j = 0; j < cols2; j++) {
-            for (let k = 0; k < cols1; k++) {
-                result[i][j] += matrix1[i][k] * matrix2[k][j];
+    } else {
+        
+        //initialize our result
+        const result = new Array(rows1).fill(null).map(() => new Array(cols2).fill(0));
+        
+        for (let i = 0; i < rows1; i++) {
+            for (let j = 0; j < cols2; j++) {
+                for (let k = 0; k < cols1; k++) {
+                    result[i][j] += matrix1[i][k] * matrix2[k][j];
+                }
             }
         }
-    }
-
+    };
     return result;
 }
 
@@ -71,23 +90,15 @@ class Neuron {
     }
 }
 
-// Example usage
-const inputs = [1.0, 2.0, 3.0];
-const weights = [0.5, 0.8, -0.2];
-const bias = 0.1;
 
-const neuron = new Neuron(inputs, weights, bias);
 
-// Access properties
-console.log("Inputs: " + neuron.inputs.join(", "));
-console.log("Weights: " + neuron.weights.join(", "));
-console.log("Bias: " + neuron.bias);
-
-/* now onto coding our first layer
+/* now onto coding our first layer */
 const weights1 = [0.2, 0.8, -0.5, 1.0];
 const weights2 = [0.5, -0.91, -0.26, -0.5];
 const weights3 = [-0.26, -0.27, 0.17, 0.87];
 
+
+/*
 const bias1 = 2
 const bias2 = 3
 const bias3 = 0.5
@@ -99,3 +110,6 @@ const output = [inputs[0]*weights1[0] + inputs[1]*weights1[1] + inputs[2]*weight
                 inputs[0]*weights3[0] + inputs[1]*weights3[1] + inputs[2]*weights3[2] + inputs[3]*weights3[3]] ; 
 
 console.log(output) */
+
+console.log(dotProduct(weights1, weights2))
+
