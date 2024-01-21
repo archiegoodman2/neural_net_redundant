@@ -1,3 +1,6 @@
+
+//note to self - this uses recursion. It's pretty slow.
+
 function getNumDimensions(arr) {
     if (Array.isArray(arr)) {
         // If it's an array, recursively check the first element
@@ -7,6 +10,11 @@ function getNumDimensions(arr) {
         return 0;
     }
 }
+
+//this function is useful and was fun to make so I'll probably keep it in, but I think I'll make another 2 functions to get product when you actually KNOW the dimensions beforehand
+//ie when the dimensions are hardcoded into the weights and inputs objects (objects that I will soon create in main.js) 
+//because we'll likely usually know the dimension of the matrix, and that's way faster.
+//for now though I just need to sort the logic of a vector and a 2D matrix.
 
 
 function dotProduct(matrix1, matrix2) {
@@ -18,7 +26,7 @@ function dotProduct(matrix1, matrix2) {
 
         let result = 0 //can't use const as we plan to change the value
 
-        if (matrix1.length() !== matrix2.legnth()) {
+        if (matrix1.length !== matrix2.length) {
             throw new Error("Vectors must be the same length to multiply")
         } else {
             for (let i = 0; i < matrix1.length; i++) {
@@ -63,5 +71,8 @@ function dotProduct(matrix1, matrix2) {
         }
     }
 }
-module.exports = dotProduct
 
+module.exports = {
+    getNumDimensions,
+    dotProduct
+};
