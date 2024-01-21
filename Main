@@ -11,12 +11,14 @@ class Neuron {
         this.setBias(bias);
     }
 
+
+//note to self - make weights and inptus into separate objects, depending on what the next steps in the neural net are. 
+
     // Setter method for Inputs
     setInputs(inputs) {
         if (!inputs || !Array.isArray(inputs)) {
             throw new Error("Inputs must be a non-null array");
         }
-
         this.inputs = [...inputs];
     }
 
