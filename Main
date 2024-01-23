@@ -12,7 +12,7 @@ class Neuron {
     }
 
 
-//note to self - make weights and inptus into separate objects, depending on what the next steps in the neural net are. 
+//note to self - make weights and inptus into separate objects, depending on what the next steps in the neural net are. then change dotproduct logic to simply apply differnet logic based on whether an input (usually 2D) or weights were inputted
 
     // Setter method for Inputs
     setInputs(inputs) {
