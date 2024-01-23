@@ -1,5 +1,5 @@
 
-//note to self - this uses recursion. It's pretty slow.
+
 
 function getNumDimensions(arr) {
     if (Array.isArray(arr)) {
@@ -10,11 +10,6 @@ function getNumDimensions(arr) {
         return 0;
     }
 }
-
-//this function is useful and was fun to make so I'll probably keep it in, but I think I'll make another 2 functions to get product when you actually KNOW the dimensions beforehand
-//ie when the dimensions are hardcoded into the weights and inputs objects (objects that I will soon create in main.js) 
-//because we'll likely usually know the dimension of the matrix, and that's way faster.
-//for now though I just need to sort the logic of a vector and a 2D matrix.
 
 
 function dotProduct(matrix1, matrix2) {
@@ -39,11 +34,25 @@ function dotProduct(matrix1, matrix2) {
 
     }else if (getNumDimensions(matrix1) == 1 || getNumDimensions(matrix1) == 1 ) {
 
-        //intialize our result
-        result = 0 
-        //enter logic here for checking a vector and a matrix 
+        if (matrix[0].length !== vector.length) {
+            throw new Error('Incompatible matrix and vector sizes for multiplication');
+        }
 
-        return result
+        var result = [];
+
+        for (var i = 0; i < matrix.length; i++) {
+        
+            var row = matrix[i];
+            var sum = 0;
+
+            for (var j = 0; j < row.length; j++) {
+                sum += row[j] * vector[j];
+            }
+
+            result.push(sum);
+        }
+        return result;
+
     }else if (getNumdimensions(matrix1) == 2 && getNumdimensions == 2) {
         // First we check if we have two 2D matrices: First, check if the two matrices are compatible
    
@@ -71,6 +80,58 @@ function dotProduct(matrix1, matrix2) {
         }
     }
 }
+
+
+
+
+
+//ok potential new idea - to avoid the recursion and other nasties
+
+/*
+function matrixvectorproduct(vector, matrix) {
+
+    //first we check if the matrix and vector are compatible
+    if (matrix[0].length !== vector.length) {
+        throw new Error('Incompatible matrix and vector sizes for multiplication');
+    }
+
+    var result = [];
+
+    for (var i = 0; i < matrix.length; i++) {
+        
+        var row = matrix[i];
+        var sum = 0;
+
+        for (var j = 0; j < row.length; j++) {
+            sum += row[j] * vector[j];
+        }
+
+        result.push(sum);
+    }
+
+    return result;
+}
+
+
+function dotProduct(vector1, vector2) {
+    // first we check if vectors are compatible
+    
+    if (vector1.length !== vector2.length) {
+        throw new Error('Incompatible vector lengths for dot product');
+    }
+
+    var result = 0;
+
+    for (var i = 0; i < vector1.length; i++) {
+        result += vector1[i] * vector2[i];
+    }
+
+    return result;
+}
+*/
+
+//this will only work if we are doing a separate operation for our input layer and hidden layers, not just looping all the way through.
+
 
 module.exports = {
     getNumDimensions,
