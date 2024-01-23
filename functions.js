@@ -34,6 +34,14 @@ function dotProduct(matrix1, matrix2) {
 
     }else if (getNumDimensions(matrix1) == 1 || getNumDimensions(matrix1) == 1 ) {
 
+        if ((getNumDimensions(matrix1)) == 1) {
+            vector = matrix1;
+        } else if ((getNumDimensions(matrix2)) == 1) {
+            vector = matrix2;
+        } else {                                  
+            throw new Error('Logic for vector matrix product was applied despite the fact that neither input was a vector. review your code');
+        }
+
         if (matrix[0].length !== vector.length) {
             throw new Error('Incompatible matrix and vector sizes for multiplication');
         }
