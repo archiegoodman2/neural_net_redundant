@@ -32,18 +32,17 @@ function dotProduct(matrix1, matrix2) {
             //so that the next condition will NOT run for two vectors
         };
 
+            //now this is for when one is a matrix and one is a vector
     }else if (getNumDimensions(matrix1) == 1 || getNumDimensions(matrix1) == 1 ) {
 
         //first we need to determine which of our two functions is the vector and which is the matrix
         if ((getNumDimensions(matrix1)) == 1) {
             const vector = matrix1;
-            const matrix = matrix2
+            const matrix = matrix2;
         } else if ((getNumDimensions(matrix2)) == 1) {
             const vector = matrix2;
-            const matrix = matrix2
-        } else {                                  
-            throw new Error('Logic for vector matrix product was applied despite the fact that neither input was a vector. review your code');
-        }
+            const matrix = matrix2;
+        } 
 
         //ok now out of matrix1 and 2, the one that is a vector is stored in 'vector'
 
@@ -66,6 +65,7 @@ function dotProduct(matrix1, matrix2) {
         }
         return result;
 
+        //and this finally is for two 2d matrices
     }else if (getNumdimensions(matrix1) == 2 && getNumdimensions == 2) {
         // First we check if we have two 2D matrices: First, check if the two matrices are compatible
    
