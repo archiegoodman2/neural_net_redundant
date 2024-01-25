@@ -26,11 +26,11 @@ test('correct error message when 2 vectors are wrong size', () => {
   const vector1 = [1, 2, 3] 
   const vector2 = [2, 3, 4, 5]
 
-  expect(dotProduct(vector1, vector2)).toBe(20);
+  expect(dotProduct(vector1, vector2)).toThrow("Vectors must be the same length to multiply");
 });
 
 
-test('getting dotproduct of a vector and a 2D matrix', () => {
+test('getting product of a vector and a 2D matrix', () => {
   const vector = [1, 2, 3] 
   const matrix = [[2, 3, 4],
                   [1, 2, 3],
@@ -40,7 +40,17 @@ test('getting dotproduct of a vector and a 2D matrix', () => {
 });
 
 
+test('getting product of a vector and a 2D matrix', () => {
+    const vector = [1, 2, 3] 
+    const matrix = [[2, 3, 4],
+                    [1, 2, 3],
+                    [2 , 3, 4],
+                    [1, 2, 3]]
+  
+    expect(dotProduct(vector, matrix)).toThrow("Incompatible matrix and vector sizes for multiplication");
+  });
 
+  //also need to check that it can recognise a vector and a matrix and execute the right part
 
 
 
