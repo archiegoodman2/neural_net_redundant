@@ -34,13 +34,18 @@ function dotProduct(matrix1, matrix2) {
 
     }else if (getNumDimensions(matrix1) == 1 || getNumDimensions(matrix1) == 1 ) {
 
+        //first we need to determine which of our two functions is the vector and which is the matrix
         if ((getNumDimensions(matrix1)) == 1) {
-            vector = matrix1;
+            const vector = matrix1;
+            const matrix = matrix2
         } else if ((getNumDimensions(matrix2)) == 1) {
-            vector = matrix2;
+            const vector = matrix2;
+            const matrix = matrix2
         } else {                                  
             throw new Error('Logic for vector matrix product was applied despite the fact that neither input was a vector. review your code');
         }
+
+        //ok now out of matrix1 and 2, the one that is a vector is stored in 'vector'
 
         if (matrix[0].length !== vector.length) {
             throw new Error('Incompatible matrix and vector sizes for multiplication');
