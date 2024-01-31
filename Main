@@ -2,6 +2,7 @@
 const dotProduct = require('./functions.js');
 
 
+//to do: make a layer class 
 
 class Neuron {
     // Properties
