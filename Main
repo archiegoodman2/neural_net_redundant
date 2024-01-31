@@ -3,6 +3,7 @@ const dotProduct = require('./functions.js');
 
 
 //to do: make a layer class 
+//plan: use maths library - to multiply matrices
 
 class Neuron {
     // Properties
