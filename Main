@@ -1,41 +1,25 @@
 
 const dotProduct = require('./functions.js');
+const random = new Random()
+
+//time to define some hidden layers
+//note to self - install random-js, check that this does the same thing as random.randn in np
 
 
-//to do: make a layer class 
-//plan: use maths library - to multiply matrices
+//let's quickly define an input
+const Input = [[1,2,3,2.5],
+               [2.0, 5.0, -1.0, 2.0],
+               [-1.5, 2.7, 3.3, -0.8]]
 
-class Neuron {
-    // Properties
-    constructor(inputs, weights, bias) {
-        this.setInputs(inputs);
-        this.setWeights(weights);
-        this.setBias(bias);
+              
+class Layer_Dense {
+    constructor(n_inputs, n_neurons) {
+        this.set_n_inputs()
+        this.set_n_neurons()
     }
 
-
-//note to self - make weights and inptus into separate objects, depending on what the next steps in the neural net are. then change dotproduct logic to simply apply differnet logic based on whether an input (usually 2D) or weights were inputted
-
-    // Setter method for Inputs
-    setInputs(inputs) {
-        if (!inputs || !Array.isArray(inputs)) {
-            throw new Error("Inputs must be a non-null array");
-        }
-        this.inputs = [...inputs];
-    }
-
-    // Setter method for Weights
-    setWeights(weights) {
-        if (!weights || !Array.isArray(weights)) {
-            throw new Error("Weights must be a non-null array");
-        }
-
-        this.weights = [...weights];
-    }
-
-    // Setter method for Bias
-    setBias(bias) {
-        this.bias = bias;
+    set_n_inputs(n_inputs, n_neurons){
+        this.n_inputs = random.normal(n_inputs, n_neurons)
     }
 }
 
@@ -47,18 +31,6 @@ const weights2 = [0.5, -0.91, -0.26, -0.5];
 const weights3 = [-0.26, -0.27, 0.17, 0.87];
 
 
-/*
-const bias1 = 2
-const bias2 = 3
-const bias3 = 0.5
-
-//this represents a layer, where each element of our list is a neuron
-
-const output = [inputs[0]*weights1[0] + inputs[1]*weights1[1] + inputs[2]*weights1[2] + inputs[3]*weights1[3], 
-                inputs[0]*weights2[0] + inputs[1]*weights2[1] + inputs[2]*weights2[2] + inputs[3]*weights2[3], 
-                inputs[0]*weights3[0] + inputs[1]*weights3[1] + inputs[2]*weights3[2] + inputs[3]*weights3[3]] ; 
-
-console.log(output) */
 
 console.log(dotProduct(weights1, weights2))
 
