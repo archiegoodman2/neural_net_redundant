@@ -13,6 +13,8 @@ const Input = [[1,2,3,2.5],
 
               
 class Layer_Dense {
+
+//this is doing a similiar thing to the __init__ method
     constructor(n_inputs, n_neurons) {
         this.set_n_inputs()
         this.set_n_neurons()
